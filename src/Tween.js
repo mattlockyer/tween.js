@@ -129,7 +129,16 @@ TWEEN.Tween = function (object) {
 	for (var field in object) {
 		_valuesStart[field] = parseFloat(object[field], 10);
 	}
-
+	
+	//reset all starting values present in a target object
+	this.from = function(object) {
+	    _object = object;
+	    for (var field in object) {
+    		_valuesStart[field] = parseFloat(object[field], 10);
+	    	}
+	    return this;
+	};
+	
 	this.to = function (properties, duration) {
 
 		if (duration !== undefined) {
